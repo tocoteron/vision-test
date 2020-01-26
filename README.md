@@ -5,7 +5,7 @@ You can play vision test and enjoy.
 ## Getting Started
 
 ### Prerequisites
-- [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D)
+- [OpenSiv3D](https://siv3d.github.io/)
 - IDE(e.g., Visual Studio, XCode, ...)
 
 ### Installing
