@@ -4,26 +4,31 @@
 #include "Result.h"
 #include "Ranking.h"
 
-void setupFullScreen(const int32 width, const int32 height)
+void setupFullScreen()
 {
-	const Size BaseSize(width, height);
+    const Array<Size> resolutions = Graphics::GetFullscreenResolutions();
 
-	Window::SetBaseSize(BaseSize);
+    if (!resolutions)
+    {
+        throw Error(U"フルスクリーンモードを利用できません。");
+    }
 
-	const auto[displayIndex, displayMode]
-		= OptimalScreen::Get(OptimalScreen::Preference::AspectMin, BaseSize);
+    // 選択肢を作成
+    const Array<String> options = resolutions.map(Format);
 
-	Graphics::SetFullScreen(true, displayMode.size, displayIndex, displayMode.refreshRateHz);
-
-	//Print << U"Display {} | size {} @ {} Hz"_fmt(displayIndex, displayMode.size, displayMode.refreshRateHz);
+    // 最大のフルスクリーン解像度にする
+    size_t index = resolutions.size() - 1;
+    if (!Window::SetFullscreen(true, resolutions[index]))
+    {
+        throw Error(U"フルスクリーンモードへの切り替えに失敗しました。");
+    }
 }
 
 int init()
 {
 	Graphics::SetTargetFrameRateHz(GameInfo::FPS);
 
-	setupFullScreen(GameInfo::WINDOW_WIDTH, GameInfo::WINDOW_HEIGHT);
-	//Window::Resize(1920, 1080);
+	setupFullScreen();
 
 	FontAsset::Register(U"Title", GameInfo::TITLE_FONT_SIZE, Typeface::Heavy);
 	FontAsset::Register(U"Menu", GameInfo::MENU_FONT_SIZE, Typeface::Bold);
@@ -41,8 +46,6 @@ void Main()
 	manager.add<Game>(U"Game");
 	manager.add<Result>(U"Result");
 	manager.add<Ranking>(U"Ranking");
-
-    System::SetExitEvent(WindowEvent::CloseButton);
 
 	while (System::Update())
 	{

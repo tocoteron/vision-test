@@ -19,7 +19,7 @@ public:
 		hasPlayedSeYeah(false)
 	{
 		ScoreManager::save(lastScore);
-		Graphics::SetBackground(Color(255, 255, 255));
+		Scene::SetBackground(Color(255, 255, 255));
 	}
 
 	void update() override
@@ -54,22 +54,22 @@ public:
 		const Rect scoreFontRegion = scoreFont(nowScore).region();
 
 		font(U"スコア").draw(
-			(Window::Width() - fontRegion.w) / 2,
-			(Window::Height() - scoreFontRegion.h) / 2 - fontRegion.h - 10,
+			(Window::ClientWidth() - fontRegion.w) / 2,
+			(Window::ClientHeight() - scoreFontRegion.h) / 2 - fontRegion.h - 10,
 			Color(40)
 		);
 
 		scoreFont(nowScore).draw(
-			(Window::Width() - scoreFontRegion.w) / 2,
-			(Window::Height() - scoreFontRegion.h) / 2,
+			(Window::ClientWidth() - scoreFontRegion.w) / 2,
+			(Window::ClientHeight() - scoreFontRegion.h) / 2,
 			Color(40)
 		);
 
 		// Under Label
 		Rect(
 			0,
-			Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT,
-			Window::Width(),
+			Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT,
+			Window::ClientWidth(),
 			GameInfo::BOTTOM_LABEL_HEIGHT
 		).draw(Color(84, 103, 122));
 	}

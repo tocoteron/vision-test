@@ -30,13 +30,13 @@ public:
 	{
 		int32 scoreFontMaxWidth = 0;
 		int32 maxScoreWidth = 0;
-		int32 topScoreY = (Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT - SCORE_FONT_SIZE * highScores.size()) / 2;
+		int32 topScoreY = (Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT - SCORE_FONT_SIZE * highScores.size()) / 2;
 
 		// Cursor Label
 		Rect(
 			0,
 			topScoreY + cursor * SCORE_FONT_SIZE + 10,
-			Window::Width(),
+			Window::ClientWidth(),
 			SCORE_FONT_SIZE
 		).draw(Color(128, 191, 63));
 
@@ -59,22 +59,22 @@ public:
 				highScores[i].score,
 				highScores[i].date
 			)).draw(
-				(Window::Width() - maxScoreWidth) / 2,
+				(Window::ClientWidth() - maxScoreWidth) / 2,
 				topScoreY + i * SCORE_FONT_SIZE,
 				Color(40)
 			);
 		}
 
 		crownTexture.draw(
-			(Window::Width() - maxScoreWidth) / 2 - crownTexture.width() - 10,
+			(Window::ClientWidth() - maxScoreWidth) / 2 - crownTexture.width() - 10,
 			topScoreY
 		);
 
 		// Under Label
 		Rect(
 			0,
-			Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT,
-			Window::Width(),
+			Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT,
+			Window::ClientWidth(),
 			GameInfo::BOTTOM_LABEL_HEIGHT
 		).draw(Color(84, 103, 122));
 	}

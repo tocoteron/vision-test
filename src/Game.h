@@ -31,8 +31,8 @@ public:
 			const int buttonSize = 100;
 			const int buttonMarginX = 10;
 			const int buttonSizeWithMarginX = buttonSize + buttonMarginX * 2;
-			const int buttonBaseX = Window::Width() * 2 / 5 - (buttonSize * 2 + buttonMarginX * 3);
-			const int buttonY = Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT + (GameInfo::BOTTOM_LABEL_HEIGHT - buttonSize) / 2;
+			const int buttonBaseX = Window::ClientWidth() * 2 / 5 - (buttonSize * 2 + buttonMarginX * 3);
+			const int buttonY = Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT + (GameInfo::BOTTOM_LABEL_HEIGHT - buttonSize) / 2;
 
 			buttons.push_back(HandButton(KeyLeft, HandButton::HandType::LEFT, buttonBaseX + buttonSizeWithMarginX * 0, buttonY, buttonSize));
 			buttons.push_back(HandButton(KeyRight, HandButton::HandType::RIGHT, buttonBaseX + buttonSizeWithMarginX * 1, buttonY, buttonSize));
@@ -53,7 +53,7 @@ public:
 		failureEffects.push_back(Texture(U"./assets/wrong_effect_3-mini.png"));
 
 		//Window::SetTitle(U"VISION TEST");
-		Graphics::SetBackground(Color(255, 255, 255));
+		Scene::SetBackground(Color(255, 255, 255));
 	}
 
 	void update() override
@@ -85,8 +85,8 @@ public:
 
 		if (hasClear) {
 			testCircle = TestCircle::getRandomTestCircle(
-				Window::Width() * 2 / 5,
-				(Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT) / 2
+				Window::ClientWidth() * 2 / 5,
+				(Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT) / 2
 			);
 			remainingTime = MAX_RAMAINING_TIME * GameInfo::FPS;
 			--remainingCountForManyShotMode;
@@ -124,8 +124,8 @@ public:
 		// Under Label
 		Rect(
 			0,
-			Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT,
-			Window::Width(),
+			Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT,
+			Window::ClientWidth(),
 			GameInfo::BOTTOM_LABEL_HEIGHT
 		).draw(Color(84, 103, 122));
 
@@ -206,8 +206,8 @@ public:
 
 		// Woman
 		{
-			const int womanX = Window::Width() - womanTexture.width() - GameInfo::BOTTOM_LABEL_HEIGHT;
-			const int womanY = Window::Height() - womanTexture.height() - GameInfo::BOTTOM_LABEL_HEIGHT;
+			const int womanX = Window::ClientWidth() - womanTexture.width() - GameInfo::BOTTOM_LABEL_HEIGHT;
+			const int womanY = Window::ClientHeight() - womanTexture.height() - GameInfo::BOTTOM_LABEL_HEIGHT;
 
 			womanTexture.draw(womanX, womanY);
 

@@ -21,14 +21,14 @@ public:
 
 		for (int i = 0; i < menuBoxes.size(); ++i) {
 			menuBoxes[i].set(
-				Window::Width() * 1 / 8,
-				(Window::Height() - menuBoxes.size() * 80) / 2 + i * 80,
+				Window::ClientWidth() * 1 / 8,
+				(Window::ClientHeight() - menuBoxes.size() * 80) / 2 + i * 80,
 				boxWidth + 80,
 				60
 			);
 		}
 
-		Graphics::SetBackground(Color(255, 255, 255));
+		Scene::SetBackground(Color(255, 255, 255));
 	}
 
 	void update() override
@@ -87,8 +87,8 @@ public:
 		// Under Label
 		Rect(
 			0,
-			Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT,
-			Window::Width(),
+			Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT,
+			Window::ClientWidth(),
 			GameInfo::BOTTOM_LABEL_HEIGHT
 		).draw(Color(84, 103, 122));
 
@@ -96,16 +96,16 @@ public:
 		{
 			const Rect titleFontRegion = titleFont(GameInfo::TITLE).region();
 			titleFont(GameInfo::TITLE).draw(
-				(Window::Width() - titleFontRegion.w) / 2,
-				(Window::Height() - titleFontRegion.h) / 2,
+				(Window::ClientWidth() - titleFontRegion.w) / 2,
+				(Window::ClientHeight() - titleFontRegion.h) / 2,
 				Color(40)
 			);
 		}
 
 		// Hakase
 		hakaseTexture.draw(
-			Window::Width() * 9 / 10 - hakaseTexture.width(),
-			Window::Height() - GameInfo::BOTTOM_LABEL_HEIGHT - hakaseTexture.height()
+			Window::ClientWidth() * 9 / 10 - hakaseTexture.width(),
+			Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT - hakaseTexture.height()
 		);
 	}
 private:
