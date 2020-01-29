@@ -2,6 +2,8 @@
 This is a game like vision test.
 You can play vision test and enjoy.
 
+SlideShare(Detail): [https://www.slideshare.net/TenTokoro/vision-test](https://www.slideshare.net/TenTokoro/vision-test)
+
 ![menu_image](./images/menu.png)
 ![game_image](./images/game.png)
 
