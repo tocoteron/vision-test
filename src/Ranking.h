@@ -22,15 +22,14 @@ public:
 			cursor = (cursor + 1) % highScores.size();
 		}
 		else if (KeyUp.down()) {
-			cursor = (cursor - 1 + highScores.size()) % highScores.size();
+			cursor = (int32)(cursor - 1 + highScores.size()) % highScores.size();
 		}
 	}
 
 	void draw() const override
 	{
-		int32 scoreFontMaxWidth = 0;
 		int32 maxScoreWidth = 0;
-		int32 topScoreY = (Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT - SCORE_FONT_SIZE * highScores.size()) / 2;
+		int32 topScoreY = (int32)(Window::ClientHeight() - GameInfo::BOTTOM_LABEL_HEIGHT - SCORE_FONT_SIZE * highScores.size()) / 2;
 
 		// Cursor Label
 		Rect(

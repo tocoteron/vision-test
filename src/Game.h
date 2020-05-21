@@ -264,10 +264,10 @@ public:
 		HandButton::HandType handType = button.getHandType();
 		TestCircle::HolePos holePos = circle.getHolePos();
 
-		return handType == HandButton::HandType::LEFT && holePos == TestCircle::HolePos::LEFT
-			|| handType == HandButton::HandType::RIGHT && holePos == TestCircle::HolePos::RIGHT
-			|| handType == HandButton::HandType::TOP && holePos == TestCircle::HolePos::TOP
-			|| handType == HandButton::HandType::BOTTOM && holePos == TestCircle::HolePos::BOTTOM;
+        return (handType == HandButton::HandType::LEFT && holePos == TestCircle::HolePos::LEFT)
+            || (handType == HandButton::HandType::RIGHT && holePos == TestCircle::HolePos::RIGHT)
+            || (handType == HandButton::HandType::TOP && holePos == TestCircle::HolePos::TOP)
+            || (handType == HandButton::HandType::BOTTOM && holePos == TestCircle::HolePos::BOTTOM);
 	}
 
 	int calcScore(int chain)

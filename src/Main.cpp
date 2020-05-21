@@ -28,7 +28,14 @@ int init()
 {
 	Graphics::SetTargetFrameRateHz(GameInfo::FPS);
 
-	setupFullScreen();
+    if(GameInfo::isFullScreen)
+    {
+        setupFullScreen();
+    }
+    else
+    {
+        Window::Resize(Size(GameInfo::WINDOW_WIDTH, GameInfo::WINDOW_HEIGHT));
+    }
 
 	FontAsset::Register(U"Title", GameInfo::TITLE_FONT_SIZE, Typeface::Heavy);
 	FontAsset::Register(U"Menu", GameInfo::MENU_FONT_SIZE, Typeface::Bold);

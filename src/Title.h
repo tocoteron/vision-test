@@ -22,7 +22,7 @@ public:
 		for (int i = 0; i < menuBoxes.size(); ++i) {
 			menuBoxes[i].set(
 				Window::ClientWidth() * 1 / 8,
-				(Window::ClientHeight() - menuBoxes.size() * 80) / 2 + i * 80,
+				(int)(Window::ClientHeight() - menuBoxes.size() * 80) / 2 + i * 80,
 				boxWidth + 80,
 				60
 			);
@@ -34,7 +34,7 @@ public:
 	void update() override
 	{
 		if (KeyUp.down()) {
-			menuCursor = (menuCursor - 1 + menuBoxes.size()) % menuBoxes.size();
+			menuCursor = (int32)(menuCursor - 1 + menuBoxes.size()) % menuBoxes.size();
 			seSelect.playOneShot();
 		}
 		else if(KeyDown.down()) {

@@ -12,8 +12,10 @@ namespace GameInfo
 
 	const int32 FPS = 30;
 
-	const int32 WINDOW_WIDTH = 1920;
-	const int32 WINDOW_HEIGHT = 1080;
+    const bool isFullScreen = true;
+
+	const int32 WINDOW_WIDTH = isFullScreen ? 1920 : 1680;
+	const int32 WINDOW_HEIGHT = isFullScreen ? 1080 : 980;
 
 	const String TITLE = U"Visicn Test";
 	const String VERSION = U"Version 0.1";
